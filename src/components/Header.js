@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import convertMoney from '../tests/helpers/convertMoney';
 
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
-    const total = expenses.reduce((prev, curr, index) => {
-      const taxa = curr.exchangeRates[expenses[index].currency].ask;
-      return prev + (parseFloat(curr.value) * taxa);
-    }, 0);
+    const total = expenses.reduce(
+      (prev, curr, index) => prev + convertMoney(
+        curr.value,
+        curr.exchangeRates[expenses[index].currency].ask,
+      ),
+      0,
+    );
     const resultado = total.toFixed(2);
     // resultado = resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
 
