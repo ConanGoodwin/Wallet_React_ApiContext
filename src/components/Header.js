@@ -34,7 +34,19 @@ const mapStateToProps = ({ user: { email }, wallet: { expenses } }) => ({
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  expenses: PropTypes.arrayOf(PropTypes.string).isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired,
+    method: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    exchangeRates: PropTypes.objectOf(PropTypes.shape({
+      code: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      ask: PropTypes.string.isRequired,
+    })).isRequired,
+  })).isRequired,
 };
 
 export default connect(mapStateToProps)(Header);
