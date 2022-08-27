@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
-    // console.log(expenses[0].exchangeRates[expenses[0].currency].ask);
     const total = expenses.reduce((prev, curr, index) => {
       const taxa = curr.exchangeRates[expenses[index].currency].ask;
       return prev + (parseFloat(curr.value) * taxa);

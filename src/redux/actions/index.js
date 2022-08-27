@@ -10,11 +10,6 @@ export const newLogin = (payLoad) => ({
   payLoad,
 });
 
-// export const newExpense = (payLoad) => ({
-//   type: ADD_EXPENSE,
-//   payLoad,
-// });
-
 export function errorConect({ message }) {
   console.log(message);
 }
@@ -46,30 +41,12 @@ export function connectApi() {
   };
 }
 
-// makeActualCurrencies = (data) => {
-//   const fullCurrencies = [data];
-//   let dataCurrencies = {};
-
-//   fullCurrencies.forEach((item) => {
-//     const { code, name, ask } = Object.values(item)[0];
-
-//     dataCurrencies = {
-//       ...dataCurrencies,
-//       // [Object.keys(item)[0]]: Object.values(item)[0], // sem restringir os dados.
-//       [Object.keys(item)[0]]: { code, name, ask }, // restringindo a code, name e ask
-//     };
-//   });
-
-//   return dataCurrencies;
-// };
-
 export const newExpense = (state) => async (dispatch) => {
   try {
     dispatch({ type: IS_LOADING });
     const URL = 'https://economia.awesomeapi.com.br/json/all';
     const fetchApi = await fetch(URL);
     const data = await fetchApi.json();
-    // const dataCurrencies = makeActualCurrencies(data);
 
     await dispatch({
       type: ADD_EXPENSE,

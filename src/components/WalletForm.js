@@ -138,7 +138,6 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   qtCurrencies: PropTypes.number.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  fullCurrencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   loading: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
