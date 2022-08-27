@@ -8,10 +8,10 @@ class WalletForm extends Component {
     super();
 
     this.state = {
-      value: 0,
+      value: '',
       description: '',
       currency: 'USD',
-      method: 'dinheiro',
+      method: 'Dinheiro',
       tag: 'Alimentação',
     };
   }
@@ -26,24 +26,25 @@ class WalletForm extends Component {
     this.setState({ [target.name]: target.value });
   };
 
-  formSubmit = (action) => {
-    const { dispatch, fullCurrencies, qtCurrencies } = this.props;
-    let dataCurrencies = {};
-    fullCurrencies.forEach((item) => {
-      // console.log(Object.keys(item)[0]);
-      // console.log(Object.values(item)[0]);
-      dataCurrencies = {
-        ...dataCurrencies,
-        [Object.keys(item)[0]]: Object.values(item)[0],
-      };
+  clearInputs = () => {
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'dinheiro',
+      tag: 'Alimentação',
     });
+  };
+
+  formSubmit = async (action) => {
+    const { dispatch, qtCurrencies } = this.props;
 
     action.preventDefault();
-    dispatch(newExpense({
+    await dispatch(newExpense({
       id: qtCurrencies + 1,
       ...this.state,
-      exchangeRates: dataCurrencies,
     }));
+    this.clearInputs();
   };
 
   render() {
@@ -105,9 +106,9 @@ class WalletForm extends Component {
                 onChange={ this.handleChange }
                 data-testid="method-input"
               >
-                <option value="dinheiro">Dinheiro</option>
-                <option value="credito">Cartão de crédito</option>
-                <option value="debito">Cartão de débito</option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Cartão de crédito">Cartão de crédito</option>
+                <option value="Cartão de débito">Cartão de débito</option>
               </select>
             </label>
             <label htmlFor="categorySpend">

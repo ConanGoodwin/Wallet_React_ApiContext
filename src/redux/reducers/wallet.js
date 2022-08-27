@@ -1,7 +1,9 @@
-import { ADD_CURRENCIES, ADD_EXPENSE, ADD_FULL_CURRENCIES, IS_LOADING } from '../actions';
+import {
+  ADD_CURRENCIES, ADD_EXPENSE, ADD_FULL_CURRENCIES, ADD_QT_EXPENSE, IS_LOADING,
+} from '../actions';
 
 const INITIAL_STATE = {
-  qtCurrencies: 0,
+  qtCurrencies: -1,
   currencies: [],
   fullCurrencies: [], // array de string
   expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
@@ -11,16 +13,19 @@ const INITIAL_STATE = {
 };
 
 function wallet(state = INITIAL_STATE, { type, payLoad }) {
+  const { loading, expenses, qtCurrencies } = state;
+
   switch (type) {
   case IS_LOADING:
-    return { ...state, loading: !state.loading };
+    return { ...state, loading: !loading };
   case ADD_CURRENCIES:
     return { ...state, currencies: [...payLoad] };
   case ADD_FULL_CURRENCIES:
     return { ...state, fullCurrencies: [...payLoad] };
   case ADD_EXPENSE:
-    console.log(payLoad);
-    return { ...state, expenses: [...state.expenses, payLoad] };
+    return { ...state, expenses: [...expenses, payLoad] };
+  case ADD_QT_EXPENSE:
+    return { ...state, qtCurrencies: qtCurrencies + 1 };
   default: return state;
   }
 }
