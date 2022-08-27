@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import convertMoney from '../tests/helpers/convertMoney';
+import { removeExpense } from '../redux/actions';
 
 class Table extends Component {
   render() {
-    const { expenses } = this.props;
+    const { expenses, dispatch } = this.props;
 
     return (
       <section>
@@ -50,7 +51,14 @@ class Table extends Component {
                     </td>
                     <td>Real</td>
                     <td>
-                      <button type="button">att</button>
+                      <button
+                        type="button"
+                        name={ item.id }
+                        data-testid="delete-btn"
+                        onClick={ () => dispatch(removeExpense(item.id)) }
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))
@@ -68,6 +76,7 @@ class Table extends Component {
 }
 
 Table.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     value: PropTypes.string.isRequired,

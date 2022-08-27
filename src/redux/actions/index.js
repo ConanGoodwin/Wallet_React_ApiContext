@@ -3,10 +3,16 @@ export const ADD_CURRENCIES = 'ADD_CURRENCIES';
 export const ADD_FULL_CURRENCIES = 'ADD_FULL_CURRENCIES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const ADD_QT_EXPENSE = 'ADD_QT_EXPENSE';
+export const DEL_EXPENSE = 'DEL_EXPENSE';
 export const IS_LOADING = 'IS_LOADING';
 
 export const newLogin = (payLoad) => ({
   type: ADD_LOGIN,
+  payLoad,
+});
+
+export const removeExpense = (payLoad) => ({
+  type: DEL_EXPENSE,
   payLoad,
 });
 
