@@ -38,7 +38,7 @@ export function errorConect({ message }) {
 export const editExpense = (state) => async (dispatch) => {
   try {
     dispatch({ type: IS_LOADING });
-    const data = await connectApi();
+    const data = await connectApi();// teste
 
     await dispatch({
       type: EDIT_EXPENSE,
