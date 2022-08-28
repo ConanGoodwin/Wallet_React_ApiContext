@@ -4,6 +4,8 @@ export const ADD_FULL_CURRENCIES = 'ADD_FULL_CURRENCIES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const ADD_QT_EXPENSE = 'ADD_QT_EXPENSE';
 export const DEL_EXPENSE = 'DEL_EXPENSE';
+export const NEW_EDIT_EXPENSE = 'NEW_EDIT_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 export const IS_LOADING = 'IS_LOADING';
 
 export const newLogin = (payLoad) => ({
@@ -16,9 +18,41 @@ export const removeExpense = (payLoad) => ({
   payLoad,
 });
 
+export const newEditExpense = (payLoad) => ({
+  type: NEW_EDIT_EXPENSE,
+  payLoad,
+});
+
+async function connectApi() {
+  const URL = 'https://economia.awesomeapi.com.br/json/all';
+  const fetchApi = await fetch(URL);
+  const data = await fetchApi.json();
+
+  return data;
+}
+
 export function errorConect({ message }) {
   console.log(message);
 }
+
+export const editExpense = (state) => async (dispatch) => {
+  try {
+    dispatch({ type: IS_LOADING });
+    const data = await connectApi();
+
+    await dispatch({
+      type: EDIT_EXPENSE,
+      payLoad: {
+        ...state,
+        exchangeRates: data,
+      },
+    });
+
+    dispatch({ type: IS_LOADING });
+  } catch (e) {
+    errorConect(e);
+  }
+};
 
 export function successfulApi(dispatch, data) {
   const keysFiltered = Object.keys(data).filter((key) => key !== 'USDT');
@@ -31,13 +65,11 @@ export function successfulApi(dispatch, data) {
   dispatch({ type: ADD_FULL_CURRENCIES, payLoad: dataFilter });
 }
 
-export function connectApi() {
+export function newApi() {
   return async (dispatch) => {
     try {
       dispatch({ type: IS_LOADING });
-      const URL = 'https://economia.awesomeapi.com.br/json/all';
-      const fetchApi = await fetch(URL);
-      const data = await fetchApi.json();
+      const data = await connectApi();
 
       await successfulApi(dispatch, data);
       dispatch({ type: IS_LOADING });
@@ -50,9 +82,7 @@ export function connectApi() {
 export const newExpense = (state) => async (dispatch) => {
   try {
     dispatch({ type: IS_LOADING });
-    const URL = 'https://economia.awesomeapi.com.br/json/all';
-    const fetchApi = await fetch(URL);
-    const data = await fetchApi.json();
+    const data = await connectApi();
 
     await dispatch({
       type: ADD_EXPENSE,

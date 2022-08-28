@@ -1,6 +1,6 @@
 import {
   ADD_CURRENCIES, ADD_EXPENSE, ADD_FULL_CURRENCIES,
-  ADD_QT_EXPENSE, DEL_EXPENSE, IS_LOADING,
+  ADD_QT_EXPENSE, DEL_EXPENSE, EDIT_EXPENSE, IS_LOADING, NEW_EDIT_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -28,7 +28,17 @@ function wallet(state = INITIAL_STATE, { type, payLoad }) {
   case ADD_QT_EXPENSE:
     return { ...state, qtCurrencies: qtCurrencies + 1 };
   case DEL_EXPENSE:
-    return { ...state, expenses: expenses.filter(({ id }) => id !== payLoad) };
+    return {
+      ...state, expenses: expenses.filter(({ id }) => id !== payLoad), editor: false,
+    };
+  case NEW_EDIT_EXPENSE:
+    return { ...state, idToEdit: payLoad, editor: true };
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      editor: false,
+      expenses: [...expenses.map((item) => (item.id !== payLoad.id ? item : payLoad))],
+    };
   default: return state;
   }
 }

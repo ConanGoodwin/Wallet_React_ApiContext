@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { connectApi, newExpense } from '../redux/actions';
+import { newApi, newExpense, editExpense } from '../redux/actions';
 
 class WalletForm extends Component {
+  EDIT = true;
+
   constructor() {
     super();
 
@@ -19,7 +21,7 @@ class WalletForm extends Component {
   async componentDidMount() {
     const { dispatch } = this.props;
 
-    await dispatch(connectApi());
+    await dispatch(newApi());
   }
 
   handleChange = ({ target }) => {
@@ -37,22 +39,51 @@ class WalletForm extends Component {
   };
 
   formSubmit = async (action) => {
-    const { dispatch, qtCurrencies } = this.props;
+    const { dispatch, qtCurrencies, editor, idToEdit } = this.props;
 
     action.preventDefault();
-    await dispatch(newExpense({
-      id: qtCurrencies + 1,
-      ...this.state,
-    }));
+    if (!editor) {
+      await dispatch(newExpense({
+        id: qtCurrencies + 1,
+        ...this.state,
+      }));
+    } else {
+      await dispatch(editExpense({
+        id: idToEdit,
+        ...this.state,
+      }));
+    }
     this.clearInputs();
   };
 
+  renderWithExpanseId = () => {
+    const { editor, expenses, idToEdit } = this.props;
+
+    if (editor) {
+      const filterExpense = expenses.filter(({ id }) => id === idToEdit);
+      const { value, description, currency, method, tag } = filterExpense[0];
+
+      if (this.EDIT) {
+        this.EDIT = false;
+        this.setState({
+          value,
+          description,
+          currency,
+          method,
+          tag,
+        });
+      }
+    }
+  };
+
   render() {
-    const { currencies, loading } = this.props;
+    const { currencies, loading, editor } = this.props;
     const { value, description, currency, method, tag } = this.state;
 
     return (
       <div>
+        {(editor) && (<p>Editando...</p>)}
+        {(editor) && this.renderWithExpanseId()}
         { (loading) ? (<p>Loading...</p>) : (
           <form onSubmit={ this.formSubmit }>
             <label htmlFor="descSpend">
@@ -127,7 +158,9 @@ class WalletForm extends Component {
                 <option value="Saúde">Saúde</option>
               </select>
             </label>
-            <button type="submit">Adicionar despesa</button>
+            <button type="submit">
+              { editor ? 'Editar despesa' : 'Adicionar despesa'}
+            </button>
           </form>
         ) }
       </div>
@@ -137,18 +170,36 @@ class WalletForm extends Component {
 
 WalletForm.propTypes = {
   qtCurrencies: PropTypes.number.isRequired,
+  idToEdit: PropTypes.number.isRequired,
+  editor: PropTypes.bool.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   loading: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired,
+    method: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    exchangeRates: PropTypes.objectOf(PropTypes.shape({
+      code: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      ask: PropTypes.string.isRequired,
+    })).isRequired,
+  })).isRequired,
 };
 
-const mapStateToProps = ({
-  wallet: { qtCurrencies, currencies, fullCurrencies, loading },
+const mapStateToProps = ({ wallet: {
+  qtCurrencies, currencies, fullCurrencies, loading, idToEdit, expenses, editor },
 }) => ({
   fullCurrencies,
   qtCurrencies,
   currencies,
   loading,
+  idToEdit,
+  expenses,
+  editor,
 });
 
 export default connect(mapStateToProps)(WalletForm);
