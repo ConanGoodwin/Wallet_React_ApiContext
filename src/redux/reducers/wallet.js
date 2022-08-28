@@ -24,6 +24,7 @@ function wallet(state = INITIAL_STATE, { type, payLoad }) {
   case ADD_FULL_CURRENCIES:
     return { ...state, fullCurrencies: [...payLoad] };
   case ADD_EXPENSE:
+    if (!payLoad.description) payLoad.description = 'vazia';
     return { ...state, expenses: [...expenses, payLoad] };
   case ADD_QT_EXPENSE:
     return { ...state, qtCurrencies: qtCurrencies + 1 };
@@ -34,6 +35,7 @@ function wallet(state = INITIAL_STATE, { type, payLoad }) {
   case NEW_EDIT_EXPENSE:
     return { ...state, idToEdit: payLoad, editor: true };
   case EDIT_EXPENSE:
+    if (!payLoad.description) payLoad.description = 'vazia';
     return {
       ...state,
       editor: false,

@@ -20,6 +20,7 @@ class WalletForm extends Component {
 
   async componentDidMount() {
     const { dispatch } = this.props;
+    this.editInputsExpense = this.renderWithExpanseId.bind();
 
     await dispatch(newApi());
   }
@@ -58,6 +59,7 @@ class WalletForm extends Component {
 
   renderWithExpanseId = () => {
     const { editor, expenses, idToEdit } = this.props;
+    const { description: desc } = this.state;
 
     if (editor) {
       const filterExpense = expenses.filter(({ id }) => id === idToEdit);
@@ -65,13 +67,17 @@ class WalletForm extends Component {
 
       if (this.EDIT) {
         this.EDIT = false;
-        this.setState({
-          value,
-          description,
-          currency,
-          method,
-          tag,
-        });
+        if (desc !== description) {
+          this.setState({
+            value,
+            description,
+            currency,
+            method,
+            tag,
+          }, () => {
+            this.EDIT = true;
+          });
+        }
       }
     }
   };
@@ -79,11 +85,12 @@ class WalletForm extends Component {
   render() {
     const { currencies, loading, editor } = this.props;
     const { value, description, currency, method, tag } = this.state;
+    if (!editor) this.EDIT = true;
 
     return (
       <div>
         {(editor) && (<p>Editando...</p>)}
-        {(editor) && this.renderWithExpanseId()}
+        {(editor && this.EDIT) && this.editInputsExpense()}
         { (loading) ? (<p>Loading...</p>) : (
           <form onSubmit={ this.formSubmit }>
             <label htmlFor="descSpend">
