@@ -16,9 +16,9 @@ class Table extends Component {
     const { expenses, dispatch } = this.props;
 
     return (
-      <section>
+      <section style={ { backgroundColor: '336e00' } }>
         <table>
-          <thead>
+          <thead style={ { backgroundColor: '#63734A', color: 'greenyellow' } }>
             <tr>
               <th>Descrição</th>
               <th>Tag</th>
@@ -31,7 +31,7 @@ class Table extends Component {
               <th>Editar/Excluir</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={ { backgroundColor: '#BFCC98' } }>
             {
               (expenses) ? (
                 expenses.map((item) => (

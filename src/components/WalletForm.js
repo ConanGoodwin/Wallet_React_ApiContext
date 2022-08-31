@@ -88,7 +88,7 @@ class WalletForm extends Component {
     if (!editor) this.EDIT = true;
 
     return (
-      <div>
+      <div style={ { backgroundColor: '#DDE8B3' } }>
         {(editor) && (<p>Editando...</p>)}
         {(editor && this.EDIT) && this.editInputsExpense()}
         { (loading) ? (<p>Loading...</p>) : (

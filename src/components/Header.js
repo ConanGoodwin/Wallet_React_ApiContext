@@ -17,7 +17,7 @@ class Header extends Component {
     // resultado = resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
 
     return (
-      <header style={ { display: 'flex' } }>
+      <header style={ { display: 'flex', backgroundColor: '#598C58', color: 'white' } }>
         <div data-testid="email-field">{email}</div>
         <div data-testid="total-field">
           {

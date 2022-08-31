@@ -43,7 +43,12 @@ class Login extends React.Component {
     const { email, password, btnIsDisabled } = this.state;
 
     return (
-      <form onSubmit={ this.formSubmit }>
+      <form
+        onSubmit={ this.formSubmit }
+        style={ { backgroundColor: '#598C58', color: 'greenyellow' } }
+      >
+        <h1>TrybeWallet</h1>
+        <h2 style={ { color: '#BFCC98' } }>Login</h2>
         <input
           type="email"
           name="email"
