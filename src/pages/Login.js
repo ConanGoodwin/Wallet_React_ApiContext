@@ -97,7 +97,7 @@ class Login extends React.Component {
           <button
             type="submit"
             disabled={ btnIsDisabled }
-            className="button is-dark is-responsive is-outlined "
+            className="btnLogin button is-dark is-responsive is-outlined btnShadow"
           >
             <span className="icon">
               <i className="fa-solid fa-wallet" />

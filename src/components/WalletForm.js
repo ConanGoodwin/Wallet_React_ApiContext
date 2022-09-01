@@ -89,7 +89,15 @@ class WalletForm extends Component {
 
     return (
       <div className="main">
-        {(editor) && (<p>Editando...</p>)}
+        {(editor) && (
+          <p>
+            <span
+              className="button is-white is-loading"
+            />
+            {' '}
+            Editando...
+          </p>
+        )}
         {(editor && this.EDIT) && this.editInputsExpense()}
         { (loading) ? (<p>Loading...</p>) : (
           <form onSubmit={ this.formSubmit } className="mainForm">
@@ -179,7 +187,7 @@ class WalletForm extends Component {
             <p className="buttons">
               <button
                 type="submit"
-                className="button is-link is-small is-responsive is-outlined"
+                className="button btnShadow is-link is-small is-responsive is-outlined"
               >
                 <span className="icon">
                   <i className="fa-solid fa-circle-dollar-to-slot" />

@@ -19,6 +19,10 @@
   box-shadow: 5px 3px 3px 1px rgba(0, 0, 0, 0.6);
 }
 
+.button.is-dark.is-outlined {
+  color: white;
+}
+
 .fa-wallet {
   margin-right: 20px;
 }

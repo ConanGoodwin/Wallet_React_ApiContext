@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,9 +10,12 @@ class Table extends Component {
     const { expenses, dispatch } = this.props;
 
     return (
-      <section style={ { backgroundColor: '336e00' } }>
-        <table>
-          <thead style={ { backgroundColor: '#63734A', color: 'greenyellow' } }>
+      <section className="tableMain">
+        <table className="table is-striped">
+          <thead
+            className="tableHeader"
+            style={ { backgroundColor: '#63734A' } }
+          >
             <tr>
               <th>Descrição</th>
               <th>Tag</th>
@@ -50,22 +54,36 @@ class Table extends Component {
                   </td>
                   <td>Real</td>
                   <td>
-                    <button
-                      type="button"
-                      name={ item.id }
-                      data-testid="edit-btn"
-                      onClick={ () => dispatch(newEditExpense(item.id)) }
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      name={ item.id }
-                      data-testid="delete-btn"
-                      onClick={ () => dispatch(removeExpense(item.id)) }
-                    >
-                      Delete
-                    </button>
+                    <div className="field is-grouped">
+                      <p className="control">
+                        <button
+                          type="button"
+                          name={ item.id }
+                          className="button btnShadow
+                           is-info is-small is-rounded is-responsive is-outlined "
+                          data-testid="edit-btn"
+                          onClick={ () => dispatch(newEditExpense(item.id)) }
+                        >
+                          <span className="icon">
+                            <i className="fa-regular fa-pen-to-square" />
+                          </span>
+                          <span>Edit</span>
+                        </button>
+                        <button
+                          type="button"
+                          name={ item.id }
+                          className="button btnShadow
+                           is-danger is-small is-rounded is-responsive is-outlined "
+                          data-testid="delete-btn"
+                          onClick={ () => dispatch(removeExpense(item.id)) }
+                        >
+                          <span className="icon">
+                            <i className="fa-solid fa-trash" />
+                          </span>
+                          <span>Delete</span>
+                        </button>
+                      </p>
+                    </div>
                   </td>
                 </tr>
               ))
