@@ -5,13 +5,6 @@ import convertMoney from '../tests/helpers/convertMoney';
 import { newEditExpense, removeExpense } from '../redux/actions';
 
 class Table extends Component {
-  // editExpense = () => {
-  //   const { dispatch } = this.props;
-  //   console.log('ok');
-
-  //   dispatch(newEditExpense(item.id));
-  // };
-
   render() {
     const { expenses, dispatch } = this.props;
 
@@ -33,55 +26,49 @@ class Table extends Component {
           </thead>
           <tbody style={ { backgroundColor: '#BFCC98' } }>
             {
-              (expenses) ? (
-                expenses.map((item) => (
-                  <tr key={ item.id }>
-                    <td>{item.description}</td>
-                    <td>{item.tag}</td>
-                    <td>{item.method}</td>
-                    <td>
-                      {
-                        item.value === '' ? '0.00' : parseFloat(item.value).toFixed(2)
-                      }
-                    </td>
-                    <td>{item.exchangeRates[item.currency].name}</td>
-                    <td>
-                      {
-                        parseFloat(item.exchangeRates[item.currency].ask).toFixed(2)
-                      }
-                    </td>
-                    <td>
-                      {convertMoney(
-                        item.value,
-                        item.exchangeRates[item.currency].ask,
-                      ).toFixed(2)}
-                    </td>
-                    <td>Real</td>
-                    <td>
-                      <button
-                        type="button"
-                        name={ item.id }
-                        data-testid="edit-btn"
-                        onClick={ () => dispatch(newEditExpense(item.id)) }
-                      >
-                        Edit
-                      </button>
-                      <button
-                        type="button"
-                        name={ item.id }
-                        data-testid="delete-btn"
-                        onClick={ () => dispatch(removeExpense(item.id)) }
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td>null</td>
+              expenses.map((item) => (
+                <tr key={ item.id }>
+                  <td>{item.description}</td>
+                  <td>{item.tag}</td>
+                  <td>{item.method}</td>
+                  <td>
+                    {
+                      item.value === '' ? '0.00' : parseFloat(item.value).toFixed(2)
+                    }
+                  </td>
+                  <td>{item.exchangeRates[item.currency].name}</td>
+                  <td>
+                    {
+                      parseFloat(item.exchangeRates[item.currency].ask).toFixed(2)
+                    }
+                  </td>
+                  <td>
+                    {convertMoney(
+                      item.value,
+                      item.exchangeRates[item.currency].ask,
+                    ).toFixed(2)}
+                  </td>
+                  <td>Real</td>
+                  <td>
+                    <button
+                      type="button"
+                      name={ item.id }
+                      data-testid="edit-btn"
+                      onClick={ () => dispatch(newEditExpense(item.id)) }
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      name={ item.id }
+                      data-testid="delete-btn"
+                      onClick={ () => dispatch(removeExpense(item.id)) }
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
-              )
+              ))
             }
           </tbody>
         </table>
