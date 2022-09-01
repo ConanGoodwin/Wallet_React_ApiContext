@@ -1,0 +1,24 @@
+.myTitle {
+  font-weight: lighter;
+  font-size: xxx-large;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.formTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height:100vh;
+}
+
+.input {
+  box-shadow: 1px 2px black;
+}
+
+.fa-wallet {
+  margin-right: 20px;
+}

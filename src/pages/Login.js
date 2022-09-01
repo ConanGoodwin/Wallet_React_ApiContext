@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { newLogin } from '../redux/actions';
+import wallet from '../images/wallet_76.png';
+import '../css/login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -46,31 +48,65 @@ class Login extends React.Component {
       <form
         onSubmit={ this.formSubmit }
         style={ { backgroundColor: '#598C58', color: 'greenyellow' } }
+        className="formTitle"
       >
-        <h1>TrybeWallet</h1>
-        <h2 style={ { color: '#BFCC98' } }>Login</h2>
-        <input
-          type="email"
-          name="email"
-          value={ email }
-          placeholder="email"
-          data-testid="email-input"
-          onChange={ this.handleChange }
-        />
-        <input
-          type="password"
-          name="password"
-          value={ password }
-          placeholder="senha"
-          data-testid="password-input"
-          onChange={ this.handleChange }
-        />
-        <button
-          type="submit"
-          disabled={ btnIsDisabled }
-        >
-          Entrar
-        </button>
+        <h1 className="myTitle fontTitle">
+          TrybeWallet
+          {' '}
+          <img src={ wallet } alt="wallet" />
+        </h1>
+        <div className="field">
+          <p className="control has-icons-left has-icons-right">
+            <input
+              type="email"
+              name="email"
+              value={ email }
+              placeholder="email"
+              className="input is-primary is-small is-rounded"
+              data-testid="email-input"
+              onChange={ this.handleChange }
+            />
+            <span className="icon is-small is-left">
+              <i className="fas fa-envelope" />
+            </span>
+            <span className="icon is-small is-right">
+              <i className="fas fa-check" />
+            </span>
+          </p>
+        </div>
+        <div className="field">
+          <p className="control has-icons-left has-icons-right">
+            <input
+              type="password"
+              name="password"
+              value={ password }
+              placeholder="senha"
+              className="input is-primary is-small is-rounded"
+              data-testid="password-input"
+              onChange={ this.handleChange }
+            />
+            <span className="icon is-small is-left">
+              <i className="fas fa-lock" />
+            </span>
+            <span className="icon is-small is-right">
+              <i className="fas fa-check" />
+            </span>
+          </p>
+        </div>
+        <p className="buttons">
+          <button
+            type="submit"
+            disabled={ btnIsDisabled }
+            className="button is-dark is-responsive is-outlined "
+          >
+            <span className="icon">
+              <i className="fa-solid fa-wallet" />
+            </span>
+            <span>
+              Entrar
+            </span>
+          </button>
+        </p>
       </form>
     );
   }

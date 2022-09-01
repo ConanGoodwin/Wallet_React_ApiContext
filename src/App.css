@@ -1,3 +1,13 @@
+@font-face {
+  font-family: colege;
+  src: url('./css/fontes/CollegiateheavyoutlineMedium-B0yx.ttf');
+}
+
+.fontTitle {
+  font-family: 'colege';
+  color: greenyellow;
+}
+
 .App {
   text-align: center;
 }
