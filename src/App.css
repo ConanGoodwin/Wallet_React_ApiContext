@@ -3,6 +3,11 @@
   src: url('./css/fontes/CollegiateheavyoutlineMedium-B0yx.ttf');
 }
 
+@font-face {
+  font-family: quentin;
+  src: url('./css/fontes/Quentincaps-owxKz.ttf');
+}
+
 .fontTitle {
   font-family: 'colege';
   color: greenyellow;

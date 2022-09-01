@@ -1,0 +1,56 @@
+.cabeca {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  background-color: #598C58;
+  color: white;
+  font-size: x-large;
+  padding: 10px;
+}
+
+.walletTitle {
+  display: flex;
+  align-items: center;
+}
+
+.principalInfo {
+  font-size:medium;
+  color: rgb(200, 219, 225);
+}
+
+.total {
+  font-family: 'quentin';
+  font-weight:lighter;
+}
+
+.main {
+  background-color: #DDE8B3;
+}
+
+.mainForm {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.mainForm label {
+  margin-right: 8px;
+  display: flex;
+}
+
+.mainForm input, .mainForm select {
+  margin-left: 2px;
+}
+
+/* .select {
+  text-align:right;
+} */
+
+.button {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.fa-circle-dollar-to-slot {
+  margin-right: 20px;
+}

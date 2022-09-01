@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import convertMoney from '../tests/helpers/convertMoney';
+import wallet from '../images/wallet_48.png';
 
 class Header extends Component {
   render() {
@@ -13,19 +14,30 @@ class Header extends Component {
       ),
       0,
     );
-    const resultado = total.toFixed(2);
-    // resultado = resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+    let resultado = total.toFixed(2);
+    resultado = resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
 
     return (
-      <header style={ { display: 'flex', backgroundColor: '#598C58', color: 'white' } }>
-        <div data-testid="email-field">{email}</div>
-        <div data-testid="total-field">
-          {
-            resultado
-          }
-        </div>
-        {' '}
-        <div data-testid="header-currency-field">BRL</div>
+      <header className="cabeca">
+        <h1 className="walletTitle fontTitle">
+          TrybeWallet
+          {' '}
+          <img src={ wallet } alt="wallet" />
+        </h1>
+        <section className="principalInfo">
+          <div data-testid="email-field">
+            <i className="fa-solid fa-user">_</i>
+            {email}
+          </div>
+          <div data-testid="total-field" className="total">
+            <i className="fa-solid fa-sack-dollar">_</i>
+            {
+              resultado
+            }
+            {' '}
+            <span data-testid="header-currency-field"> BRL</span>
+          </div>
+        </section>
       </header>
     );
   }

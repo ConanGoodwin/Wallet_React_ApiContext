@@ -88,86 +88,107 @@ class WalletForm extends Component {
     if (!editor) this.EDIT = true;
 
     return (
-      <div style={ { backgroundColor: '#DDE8B3' } }>
+      <div className="main">
         {(editor) && (<p>Editando...</p>)}
         {(editor && this.EDIT) && this.editInputsExpense()}
         { (loading) ? (<p>Loading...</p>) : (
-          <form onSubmit={ this.formSubmit }>
-            <label htmlFor="descSpend">
+          <form onSubmit={ this.formSubmit } className="mainForm">
+            <label htmlFor="descSpend" className="label">
               Descrição:
-              <input
-                id="descSpend"
-                type="text"
-                name="description"
-                value={ description }
-                onChange={ this.handleChange }
-                data-testid="description-input"
-              />
+              <p className="control">
+                <input
+                  id="descSpend"
+                  type="text"
+                  name="description"
+                  value={ description }
+                  className="input is-primary is-small"
+                  onChange={ this.handleChange }
+                  data-testid="description-input"
+                />
+              </p>
             </label>
-            <label htmlFor="valueSpend">
+            <label htmlFor="valueSpend" className="label">
               Valor:
-              <input
-                id="valueSpend"
-                type="number"
-                name="value"
-                value={ value }
-                onChange={ this.handleChange }
-                data-testid="value-input"
-                // value={ 0 }
-              />
+              <p className="control">
+                <input
+                  id="valueSpend"
+                  type="number"
+                  name="value"
+                  value={ value }
+                  className="input is-primary is-small"
+                  onChange={ this.handleChange }
+                  data-testid="value-input"
+                />
+              </p>
             </label>
-            <label htmlFor="currenciesSpend">
+            <label htmlFor="currenciesSpend" className="label">
               Moeda:
-              <select
-                id="currenciesSpend"
-                name="currency"
-                value={ currency }
-                onChange={ this.handleChange }
-                data-testid="currency-input"
-              >
-                {currencies.map((item, index) => (
-                  <option
-                    value={ item }
-                    key={ index }
-                  >
-                    {item}
-                  </option>
-                ))}
-              </select>
+              <div className="select is-link is-small">
+                <select
+                  id="currenciesSpend"
+                  name="currency"
+                  value={ currency }
+                  onChange={ this.handleChange }
+                  data-testid="currency-input"
+                >
+                  {currencies.map((item, index) => (
+                    <option
+                      value={ item }
+                      key={ index }
+                    >
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </label>
-            <label htmlFor="payTypeSpend">
+            <label htmlFor="payTypeSpend" className="label">
               Metodo de pagamento:
-              <select
-                id="payTypeSpend"
-                name="method"
-                value={ method }
-                onChange={ this.handleChange }
-                data-testid="method-input"
-              >
-                <option value="Dinheiro">Dinheiro</option>
-                <option value="Cartão de crédito">Cartão de crédito</option>
-                <option value="Cartão de débito">Cartão de débito</option>
-              </select>
+              <div className="select is-link is-small">
+                <select
+                  id="payTypeSpend"
+                  name="method"
+                  value={ method }
+                  onChange={ this.handleChange }
+                  data-testid="method-input"
+                >
+                  <option value="Dinheiro">Dinheiro</option>
+                  <option value="Cartão de crédito">Cartão de crédito</option>
+                  <option value="Cartão de débito">Cartão de débito</option>
+                </select>
+              </div>
             </label>
-            <label htmlFor="categorySpend">
+            <label htmlFor="categorySpend" className="label">
               Metodo de pagamento:
-              <select
-                id="categorySpend"
-                name="tag"
-                value={ tag }
-                onChange={ this.handleChange }
-                data-testid="tag-input"
-              >
-                <option value="Alimentação">Alimentação</option>
-                <option value="Lazer">Lazer</option>
-                <option value="Trabalho">Trabalho</option>
-                <option value="Transporte">Transporte</option>
-                <option value="Saúde">Saúde</option>
-              </select>
+              <div className="select is-link is-small">
+                <select
+                  id="categorySpend"
+                  name="tag"
+                  value={ tag }
+                  onChange={ this.handleChange }
+                  data-testid="tag-input"
+                >
+                  <option value="Alimentação">Alimentação</option>
+                  <option value="Lazer">Lazer</option>
+                  <option value="Trabalho">Trabalho</option>
+                  <option value="Transporte">Transporte</option>
+                  <option value="Saúde">Saúde</option>
+                </select>
+              </div>
             </label>
-            <button type="submit">
-              { editor ? 'Editar despesa' : 'Adicionar despesa'}
-            </button>
+            <p className="buttons">
+              <button
+                type="submit"
+                className="button is-link is-small is-responsive is-outlined"
+              >
+                <span className="icon">
+                  <i className="fa-solid fa-circle-dollar-to-slot" />
+                </span>
+                <span>
+                  { editor ? 'Editar despesa' : 'Adicionar despesa'}
+                </span>
+              </button>
+            </p>
           </form>
         ) }
       </div>
