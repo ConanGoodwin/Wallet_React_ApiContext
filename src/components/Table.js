@@ -33,26 +33,32 @@ class Table extends Component {
               expenses.map((item) => (
                 <tr key={ item.id }>
                   <td>{item.description}</td>
-                  <td>{item.tag}</td>
-                  <td>{item.method}</td>
+                  <td style={ { fontSize: 'larger' } }>{item.tag}</td>
+                  <td style={ { fontSize: 'larger' } }>{item.method}</td>
                   <td>
-                    {
-                      item.value === '' ? '0.00' : parseFloat(item.value).toFixed(2)
-                    }
+                    <span className="coin">
+                      {
+                        item.value === '' ? '0.00' : parseFloat(item.value).toFixed(2)
+                      }
+                    </span>
                   </td>
                   <td>{item.exchangeRates[item.currency].name}</td>
                   <td>
-                    {
-                      parseFloat(item.exchangeRates[item.currency].ask).toFixed(2)
-                    }
+                    <span className="coin">
+                      {
+                        parseFloat(item.exchangeRates[item.currency].ask).toFixed(2)
+                      }
+                    </span>
                   </td>
                   <td>
-                    {convertMoney(
-                      item.value,
-                      item.exchangeRates[item.currency].ask,
-                    ).toFixed(2)}
+                    <span className="coin">
+                      {convertMoney(
+                        item.value,
+                        item.exchangeRates[item.currency].ask,
+                      ).toFixed(2)}
+                    </span>
                   </td>
-                  <td>Real</td>
+                  <td style={ { fontSize: 'larger' } }>Real</td>
                   <td>
                     <div className="field is-grouped">
                       <p className="control">

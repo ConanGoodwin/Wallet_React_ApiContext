@@ -76,7 +76,13 @@
 }
 
 .tableMain td {
+  font-family: 'curseBook';
   min-width: 50px;
+  color: green;
+}
+
+.coin {
+  font-family: 'quentin';
 }
 
 .tableHeader {

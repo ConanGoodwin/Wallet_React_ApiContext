@@ -8,6 +8,17 @@
   src: url('./css/fontes/Quentincaps-owxKz.ttf');
 }
 
+@font-face {
+  font-family: godin;
+  src: url('./css/fontes/DigitaltsOrange-nRAPg.ttf');
+}
+
+@font-face {
+  font-family: curseBook;
+  src: url('./css/fontes/Playball-q6o1.ttf');
+}
+
+
 .fontTitle {
   font-family: 'colege';
   color: greenyellow;
