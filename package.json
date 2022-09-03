@@ -12,6 +12,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
     "bulma": "^0.9.4",
+    "gh-pages": "^4.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "4.4.0",
@@ -22,7 +23,10 @@
     "redux-thunk": "2.4.1",
     "stylelint-order": "5.0.0"
   },
+  "homepage":  "https://ConanGoodwin.github.io/Projetos-Trybe/trybewallet",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "cy": "env CY_CLI=true cypress run",
     "cy:open": "cypress open --e2e --browser chrome",
     "start": "env ESLINT_NO_DEV_ERRORS=true react-scripts start",

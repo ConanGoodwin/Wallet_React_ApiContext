@@ -17,9 +17,22 @@ class Login extends React.Component {
   }
 
   enabledButton = () => {
+    const emailP = document.getElementById('email');
+    const passwordP = document.getElementById('password');
+    const fullClass = 'fas fa-check';
+    const failClass = 'fa-regular fa-circle-xmark';
+
     const { email, password } = this.state;
     const emailRegex = /^[^@^ ]+@[^@^ ]+\.[a-z]{2,3}(\.[a-z]{2})?$/;
     const passwordRegex = /^[A-Za-z0-9]{6}/;
+
+    if (emailRegex.test(email)) {
+      emailP.className = fullClass;
+    } else { emailP.className = failClass; }
+
+    if (passwordRegex.test(password)) {
+      passwordP.className = fullClass;
+    } else { passwordP.className = failClass; }
 
     this.setState({
       btnIsDisabled: !emailRegex.test(email) || !passwordRegex.test(password),
@@ -70,7 +83,7 @@ class Login extends React.Component {
               <i className="fas fa-envelope" />
             </span>
             <span className="icon is-small is-right">
-              <i className="fas fa-check" />
+              <i id="email" className="fas fa-check" />
             </span>
           </p>
         </div>
@@ -89,7 +102,7 @@ class Login extends React.Component {
               <i className="fas fa-lock" />
             </span>
             <span className="icon is-small is-right">
-              <i className="fas fa-check" />
+              <i id="password" className="fas fa-check" />
             </span>
           </p>
         </div>
