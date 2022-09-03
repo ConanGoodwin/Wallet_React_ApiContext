@@ -83,7 +83,7 @@ class Login extends React.Component {
               <i className="fas fa-envelope" />
             </span>
             <span className="icon is-small is-right">
-              <i id="email" className="fas fa-check" />
+              <i id="email" className="fa-regular fa-circle-xmark" />
             </span>
           </p>
         </div>
@@ -102,7 +102,7 @@ class Login extends React.Component {
               <i className="fas fa-lock" />
             </span>
             <span className="icon is-small is-right">
-              <i id="password" className="fas fa-check" />
+              <i id="password" className="fa-regular fa-circle-xmark" />
             </span>
           </p>
         </div>
