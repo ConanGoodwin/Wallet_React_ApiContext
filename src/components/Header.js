@@ -31,10 +31,12 @@ class Header extends Component {
           </div>
           <div data-testid="total-field" className="total">
             <i className="fa-solid fa-sack-dollar">_</i>
-            {
-              resultado
-            }
-            {' '}
+            <span>
+              {
+                resultado
+              }
+              {' '}
+            </span>
             <span data-testid="header-currency-field"> BRL</span>
           </div>
         </section>

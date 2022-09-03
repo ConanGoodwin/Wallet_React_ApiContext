@@ -7,6 +7,8 @@ export const DEL_EXPENSE = 'DEL_EXPENSE';
 export const NEW_EDIT_EXPENSE = 'NEW_EDIT_EXPENSE';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 export const IS_LOADING = 'IS_LOADING';
+export const UP_EXPENSE = 'UP_EXPENSE';
+export const DOWN_EXPENSE = 'DOWN_EXPENSE';
 
 export const newLogin = (payLoad) => ({
   type: ADD_LOGIN,
@@ -20,6 +22,16 @@ export const removeExpense = (payLoad) => ({
 
 export const newEditExpense = (payLoad) => ({
   type: NEW_EDIT_EXPENSE,
+  payLoad,
+});
+
+export const upExpense = (payLoad) => ({
+  type: UP_EXPENSE,
+  payLoad,
+});
+
+export const downExpense = (payLoad) => ({
+  type: DOWN_EXPENSE,
   payLoad,
 });
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import convertMoney from '../tests/helpers/convertMoney';
-import { newEditExpense, removeExpense } from '../redux/actions';
+import { downExpense, newEditExpense, removeExpense, upExpense } from '../redux/actions';
 
 class Table extends Component {
   render() {
@@ -87,6 +87,30 @@ class Table extends Component {
                             <i className="fa-solid fa-trash" />
                           </span>
                           <span>Delete</span>
+                        </button>
+                      </p>
+                      <p className="buttons">
+                        <button
+                          type="button"
+                          name={ item.id }
+                          className="button btnShadow
+                          is-dark is-small is-responsive btnUp"
+                          onClick={ () => dispatch(upExpense(item.id)) }
+                        >
+                          <span className="icon">
+                            <i className="fa-solid fa-caret-up" />
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          name={ item.id }
+                          className="button btnShadow
+                          is-dark is-small is-responsive btnDw"
+                          onClick={ () => dispatch(downExpense(item.id)) }
+                        >
+                          <span className="icon">
+                            <i className="fa-solid fa-caret-down" />
+                          </span>
                         </button>
                       </p>
                     </div>

@@ -167,7 +167,7 @@ class WalletForm extends Component {
               </div>
             </label>
             <label htmlFor="categorySpend" className="label">
-              Metodo de pagamento:
+              Categoria:
               <div className="select is-link is-small">
                 <select
                   id="categorySpend"
