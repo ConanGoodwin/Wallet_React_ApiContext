@@ -35,7 +35,6 @@
   position: fixed;
   top: 12vh;
   background-color: #DDE8B3;
-  overflow-x: scroll;
   border-bottom: 3px inset black;
   border-left: 2px inset black;
   border-right: 2px inset black;
