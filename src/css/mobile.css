@@ -1,0 +1,58 @@
+@media (max-width: 1300px) {
+  .myTitle {
+    font-weight: lighter;
+    font-size: 10vw;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .walletImg{
+    width: 15vw;
+  }
+
+  .input {
+    width: 40vw;
+  }
+
+  .principalInfo {
+    font-size: 1vw;
+  }
+
+  .table {
+    width: 1280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cabeca {
+    font-size: 4vw;
+  }
+
+  .walletImg2{
+    width: 5vw;
+  }
+
+  .principalInfo {
+    font-size: 1.5vw;
+  }
+
+  .table {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 300px) {
+  .cabeca {
+    font-size: 6vw;
+    width: 100%;
+  }
+
+  .walletImg2{
+    width: 7vw;
+  }
+
+  .principalInfo {
+    font-size: 3vw;
+  }
+}
