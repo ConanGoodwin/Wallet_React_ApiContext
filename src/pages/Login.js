@@ -66,7 +66,7 @@ class Login extends React.Component {
         <h1 className="myTitle fontTitle">
           TrybeWallet
           {' '}
-          <img src={ wallet } alt="wallet" />
+          <img src={ wallet } alt="wallet" className="walletImg" />
         </h1>
         <div className="field">
           <p className="control has-icons-left has-icons-right">

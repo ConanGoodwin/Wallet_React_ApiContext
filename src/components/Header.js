@@ -22,7 +22,7 @@ class Header extends Component {
         <h1 className="walletTitle fontTitle">
           TrybeWallet
           {' '}
-          <img src={ wallet } alt="wallet" />
+          <img src={ wallet } alt="wallet" className="walletImg2" />
         </h1>
         <section className="principalInfo">
           <div data-testid="email-field">

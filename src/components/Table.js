@@ -59,7 +59,7 @@ class Table extends Component {
                     </span>
                   </td>
                   <td style={ { fontSize: 'larger' } }>Real</td>
-                  <td>
+                  <td className="tdBtns">
                     <div className="field is-grouped">
                       <p className="control">
                         <button

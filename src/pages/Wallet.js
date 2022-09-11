@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Table from '../components/Table';
 import WalletForm from '../components/WalletForm';
 import '../css/wallet.css';
+import '../css/mobile.css';
 
 class Wallet extends React.Component {
   render() {

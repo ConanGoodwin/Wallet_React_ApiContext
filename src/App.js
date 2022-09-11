@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   return (
-    <div>
+    <div className="body">
       <Switch>
         <Route exact path="/Projetos-Trybe/trybewallet/" component={ Login } />
         <Route exact path="/carteira" component={ Wallet } />

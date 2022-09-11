@@ -1,8 +1,6 @@
 .cabeca {
   display: flex;
-  position: fixed;
-  top: 0;
-  width: 100%;
+  width: 100vw;
   flex-wrap: wrap;
   align-items: center;
   justify-content:space-between;
@@ -32,8 +30,6 @@
 
 .main {
   display: flex;
-  position: fixed;
-  top: 12vh;
   background-color: #DDE8B3;
   border-bottom: 3px inset black;
   border-left: 2px inset black;
@@ -56,10 +52,6 @@
   margin-left: 5px;
 }
 
-/* .select {
-  text-align:right;
-} */
-
 .button {
   margin-top: 10px;
   font-weight: bold;
@@ -70,15 +62,14 @@
 }
 
 .tableMain {
-  position: absolute;
-  top: 35vh;
-  z-index: -1;
   justify-content: center;
   background-color: #63734A;
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.6);
-  width: 99%;
+  width: 98.5%;
+  height: 65vh;
   margin: 20px 5px;
   overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 .tableMain td {
